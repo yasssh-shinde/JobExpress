@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobExpress</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN for the icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #003366;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: #f1f1f1;
+        }
+
+        .navbar-brand:hover {
+            color: #ff6600;
+        }
+
+        .navbar-nav .nav-link {
+            color: #f1f1f1;
+            font-size: 1.1rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ff6600;
+        }
+
+        .btn {
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-outline-secondary {
+            color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-group-vertical {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .footer-text a {
+            color: #007bff;
+        }
+
+        .footer-text a:hover {
+            color: #ff6600;
+        }
+
+        .hover-shadow-lg:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-primary {
+            color: #007bff !important;
+        }
+
+        .display-4 {
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+        }
+
+        .container {
+            margin-top: 80px;
+        }
+
+        .welcome-section {
+            background: linear-gradient(to right, #003366, #0056b3);
+            padding: 80px 0;
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        /* Custom Button Styles */
+        .btn-user-login, .btn-user-register {
+            background: linear-gradient(45deg, #00c6ff, #0072ff); /* Gradient Background */
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 15px 30px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-user-login:hover, .btn-user-register:hover {
+            background: linear-gradient(45deg, #0072ff, #00c6ff); /* Reverse Gradient on Hover */
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced Shadow on Hover */
+            transform: translateY(-5px); /* Slight hover lift */
+        }
+
+        .btn-user-login {
+            border-radius: 10px; /* Soft corners */
+        }
+
+        .btn-user-register {
+            border-radius: 10px; /* Soft corners */
+            background: linear-gradient(45deg, #ff5f6d, #ffc3a0); /* Different Gradient for Register */
+        }
+
+        .btn-user-register:hover {
+            background: linear-gradient(45deg, #ffc3a0, #ff5f6d); /* Reverse Gradient on Hover */
+        }
+
+        /* Optional: Adding Icon Sizes */
+        .bi {
+            font-size: 1.4rem;
+            margin-right: 10px;
+        }
+    </style>
+    
+</head>
+
+<body>
+
+     <!-- Navbar Section -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">JobExpress</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- Home Link with Primary Button Style -->
+                <li class="nav-item">
+                    <a class="btn btn-primary btn-lg mb-3" href="{% url 'home' %}">Home</a>
+                </li>
+                <!-- About & Contact Link with Secondary Button Style -->
+                <li class="nav-item">
+                    <a href="{% url 'about_contact' %}" class="btn btn-secondary btn-lg mb-3">About & Contact</a>
+                </li>
+                <!-- Admin Login Link in Navbar with Highlighted Style -->
+                <li class="nav-item">
+                    <a href="{% url 'admin_login' %}" class="btn btn-outline-warning btn-lg mb-3 ms-lg-3">
+                        <i class="bi bi-person-lock"></i> Admin Login
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+  <!-- Welcome Section -->
+<div class="container text-center welcome-section">
+    <h1 class="display-4 mb-4 text-primary">Welcome to JobExpress</h1>
+
+    <!-- Login and Register Buttons Section -->
+    <div class="login-buttons">
+        <!-- User Login and Register Buttons -->
+        <div class="btn-group-vertical" role="group" aria-label="Login and Register Buttons">
+            <a href="{% url 'user_login' %}" class="btn btn-user-login mb-3 shadow-sm hover-shadow-lg">
+                <i class="bi bi-person"></i> User Login
+            </a>
+            <a href="{% url 'user_register' %}" class="btn btn-user-register mb-3 shadow-sm hover-shadow-lg">
+                <i class="bi bi-person-plus-fill"></i> User Register
+            </a>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer Section -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0 text-muted footer-text">
+                This is my SYMCA Django Project. Made with <span style="color: red;">&hearts;</span> by <a href="https://www.linkedin.com/in/yash-s-645731178/">Yash</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

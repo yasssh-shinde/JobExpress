@@ -1,0 +1,95 @@
+{% extends 'base_generic.html' %}
+
+{% block navbar %}
+  <div class="d-flex justify-content-between align-items-center py-3">
+    <!-- Username Display at Upper Right Corner -->
+    <div class="ml-auto" style="font-family: 'Arial', sans-serif; font-weight: bold;">
+      <span class="text-primary">Welcome, {{ user.username }}</span>
+    </div>
+  </div>
+{% endblock %}  <!-- Skip the navbar block -->
+
+{% block content %}
+  <div class="container mt-5">
+    <!-- Website Name at the top -->
+    <h1 class="text-center text-primary mb-4" style="font-family: 'Roboto', sans-serif; font-size: 3rem; color: #007BFF;">JobExpress</h1>
+
+    <!-- Job Listings Section -->
+    <div class="card mb-4 shadow-lg" style="border-radius: 12px; border: 2px solid #007BFF;">
+      <div class="card-header bg-primary text-white" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">
+        <h3 class="mb-0" style="font-family: 'Arial', sans-serif; font-weight: bold;">Available Job Listings</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          {% for job in jobs %}
+          <div class="col-md-4 mb-4">
+            <div class="job-card border p-4 rounded shadow-sm" style="background-color: #f8f9fa; border: 1px solid #007BFF;">
+              <h4 class="text-primary" style="font-family: 'Arial', sans-serif; font-weight: bold;">{{ job.title }}</h4>
+              <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #555;">{{ job.description|truncatewords:20 }}</p>
+              <div>
+                <strong style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #007BFF;">Apply Link:</strong>
+                {% if job.apply_link %}
+                  <a href="{{ job.apply_link }}" target="_blank" class="btn btn-info btn-sm" style="background-color: #28a745; color: white; font-family: 'Arial', sans-serif;">Apply Here</a>
+                {% else %}
+                  <span class="text-muted">N/A</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="col-12">
+            <p class="text-center text-muted" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">No jobs available at the moment.</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="text-center mt-4">
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" name="logout" class="btn btn-danger btn-lg" style="font-family: 'Arial', sans-serif; background-color: #dc3545; color: white;">Logout</button>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    .card-header {
+      background-color: #007BFF;
+      border-bottom: 2px solid #0056b3;
+    }
+
+    .job-card {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+    }
+
+    .job-card:hover {
+      transform: translateY(-5px);
+      transition: transform 0.3s ease;
+    }
+
+    .btn-info {
+      background-color: #28a745;
+    }
+
+    .btn-info:hover {
+      background-color: #218838;
+    }
+
+    .btn-link {
+      color: #007BFF;
+    }
+
+    .btn-link:hover {
+      color: #0056b3;
+    }
+  </style>
+{% endblock %}

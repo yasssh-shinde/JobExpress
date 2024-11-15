@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobExpress - Job Listings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+        .header h4 {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+        .top-right {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+        }
+        .btn-logout, .btn-post-job {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-logout {
+            background-color: #ff5733;
+            color: white;
+        }
+        .btn-logout:hover {
+            background-color: #e84a29;
+        }
+        .btn-post-job {
+            background-color: #27ae60;
+            color: white;
+        }
+        .btn-post-job:hover {
+            background-color: #1e7b4d;
+        }
+        table th, table td {
+            text-align: center;
+        }
+        img {
+            max-width: 100px;
+        }
+        .job-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .job-card:hover {
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        .job-card h4 {
+            font-family: 'Raleway', sans-serif;
+            color: #34495e;
+            font-size: 1.7em;
+            margin-bottom: 10px;
+        }
+        .job-card p {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .job-card .btn-link {
+            color: #3498db;
+        }
+        .btn-link:hover {
+            color: #2980b9;
+        }
+        .btn-delete {
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+        }
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>JobExpress</h1>
+        <h4>Your one-stop platform for job opportunities</h4>
+    </div>
+
+    <!-- Job Listings Section -->
+    <div class="container mt-5">
+        <!-- Top-right Buttons (Logout and Post Job) -->
+        <div class="top-right">
+            <!-- Logout Button -->
+            <form method="post" action="{% url 'logout_view' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn-logout">Logout</button>
+            </form>
+            <!-- Post Job Button -->
+            <a href="{% url 'post_job' %}" class="btn-post-job">Post a New Job</a>
+        </div>
+
+        <div class="job-listings mt-4">
+            <h3>Available Job Listings</h3>
+            <div class="row">
+                {% for job in jobs %}
+                <div class="col-md-4">
+                    <div class="job-card">
+                        <h4>{{ job.title }}</h4>
+                        <p>{{ job.description|truncatewords:20 }}</p>
+                        <div>
+                            <strong>Apply Link:</strong>
+                            {% if job.apply_link %}
+                                <a href="{{ job.apply_link }}" target="_blank" class="btn btn-link">Apply Here</a>
+                            {% else %}
+                                <span>N/A</span>
+                            {% endif %}
+                        </div>
+                        <!-- Delete Button -->
+                        <form method="post" action="{% url 'delete_job' job.id %}" class="mt-3">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+<!-- Footer Section -->
+<footer class="bg-light py-4 mt-5">
+    <div class="container text-center">
+        <p class="mb-0 text-muted footer-text">
+            This is my SYMCA Django Project. Made with <span style="color: red;">&hearts;</span> by <a href="https://www.linkedin.com/in/yash-s-645731178/">Yash</a>
+        </p>
+    </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
