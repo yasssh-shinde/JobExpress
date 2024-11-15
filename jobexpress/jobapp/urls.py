@@ -14,9 +14,7 @@ urlpatterns = [
     path('all_users/', views.all_users, name='all_users'),
     path('about_contact/', views.about_contact, name='about_contact'),
     path('logout/', logout_view, name='logout_view'),
-   #  path('login/', views.login_view, name='login'),
      path('login/', views.user_login, name='login'),
-
      path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('login/', views.admin_login, name='login'),
     path('delete-job/<int:job_id>/', views.delete_job, name='delete_job'),

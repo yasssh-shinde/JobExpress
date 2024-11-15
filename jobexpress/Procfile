@@ -1,1 +1,1 @@
-web: gunicorn JobExpress.wsgi
+web: gunicorn jobexpress.wsgi:application
