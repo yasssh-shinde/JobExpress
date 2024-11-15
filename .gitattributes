@@ -1,0 +1,7 @@
+# Normalize line endings for all text files
+* text=auto
+
+# Specific rule for .po files to always use LF
+*.po text eol=lf
+
+
