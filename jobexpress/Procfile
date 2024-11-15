@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 web: gunicorn jobexpress.wsgi:application
+=======
+web: gunicorn jobexpress.wsgi
+>>>>>>> 9e3f0c24a3150d9419806552b42489a2024b266f
