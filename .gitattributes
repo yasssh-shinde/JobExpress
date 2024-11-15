@@ -4,4 +4,6 @@
 # Specific rule for .po files to always use LF
 *.po text eol=lf
 
+venv/
+
 
